@@ -31,11 +31,12 @@ def printProgressBar (iteration, total, prefix = '', suffix = '', decimals = 1, 
 
 def instaResize():
 	maxsize = (1060, 1330)
-	l = len(os.listdir("images/"))
+	listdir_int = len(os.listdir("images/"))
+	l = listdir_int - 1
 	printProgressBar(0, l, prefix = 'Progress:', suffix = 'Complete', length = 50)
-	i = 1
+	i = 0
 	for f in os.listdir("images/"):
-		if f.endswith(".jpg"):
+		if f.endswith(".jpg") or f.endswith(".JPG"):
 			#print(f"Resizing {f}.")
 			img = Image.open("images/"+f)
 			fn, fext = os.path.splitext(f)
@@ -51,7 +52,7 @@ def instaResize():
 			i += 1
 			sys.stdout.flush()
 			time.sleep(0.1)
-	print(f"{i-1} photos resized for Instagram.")
+	print(f"{i} photos resized for Instagram.")
 instaResize()
 
 
